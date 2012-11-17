@@ -15,18 +15,17 @@ public final class R {
         public static int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static int buttonLogin1=0x7f070006;
-        public static int buttonLogin2=0x7f070007;
-        public static int menu_settings=0x7f070008;
-        public static int password=0x7f070003;
-        public static int txt_loginerror=0x7f070000;
-        public static int txt_password=0x7f070004;
-        public static int txt_toregister=0x7f070005;
-        public static int txt_username=0x7f070002;
-        public static int username=0x7f070001;
+        public static int buttonLogin1=0x7f070005;
+        public static int buttonLogin2=0x7f070006;
+        public static int menu_settings=0x7f070007;
+        public static int password=0x7f070002;
+        public static int txt_loginerror=0x7f070004;
+        public static int txt_password=0x7f070003;
+        public static int txt_username=0x7f070001;
+        public static int username=0x7f070000;
     }
     public static final class layout {
-        public static int login=0x7f030000;
+        public static int pay_sdk_login=0x7f030000;
     }
     public static final class menu {
         public static int login=0x7f060000;

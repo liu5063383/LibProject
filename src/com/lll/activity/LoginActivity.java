@@ -25,15 +25,15 @@ public class LoginActivity extends BaseActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setTitle("登陆窗口");
-		setContentView(R.layout.login);
+		setContentView(R.layout.pay_sdk_login);
 		initview();
 	}
 	
 	public void initview() {
 		final EditText username = (EditText) findViewById(R.id.txt_username);
 		final EditText password = (EditText) findViewById(R.id.txt_password);
-		username.setText("1234");
-		password.setText("qwer");
+		username.setText("paytest");
+		password.setText("123qwe");
 		Button login1 = (Button) findViewById(R.id.buttonLogin1);
 		Button login2 = (Button) findViewById(R.id.buttonLogin2);
 		login1.setOnClickListener(new OnClickListener() {
@@ -45,6 +45,8 @@ public class LoginActivity extends BaseActivity {
 				passwordstr = password.getText().toString();
 				progressdialog = ProgressDialog.show(LoginActivity.this,
 						"请等待...", "正在为您登陆...");
+				findViewById(R.id.txt_loginerror).setVisibility(
+						View.INVISIBLE);
 				refreshHandler.sleep(100);
 			}
 
@@ -78,7 +80,6 @@ public class LoginActivity extends BaseActivity {
 		@Override
 		public void handleMessage(Message msg) {
 			try {
-				String url = "http://172.20.0.206:8082//TestServelt/login.do";
 				/**
 				 * flag 是接收来自服务器端的数据包装，这里客户与服务器交互用的是json
 				 * 
@@ -87,14 +88,17 @@ public class LoginActivity extends BaseActivity {
 				 * Bundle bagent =new Bundle(); bagent.putSerializable("agent",
 				 * agent);
 				 */
-				// Bundle flag = UserDataServiceHelper.login(uri, usernamestr,
-				// passwordstr);
 				LoginService loginService = new LoginService("", "");
 				Boolean flag = loginService.login(usernamestr, passwordstr);
-				
-				if (flag) {
+				if (true) {
 					Toast.makeText(LoginActivity.this, "登陆成功",
 							Toast.LENGTH_SHORT).show();
+					 Intent it = new Intent();
+					 Bundle extras = new Bundle();
+					 extras.putString("username", usernamestr);
+					 it.putExtras(extras);
+					setResult(RESULT_OK, it);
+					finish();
 					// Intent intent = new Intent();
 					// intent.setClass(EHRActivity.this, FileManager.class);
 					// intent.putExtras(flag);

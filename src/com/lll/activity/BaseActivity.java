@@ -10,7 +10,8 @@ public class BaseActivity extends Activity{
 	private String title;
 	private Button buttonLeft;
 	private ProgressDialog progressDialog;
-
+	public static final int LOGIN_CODE = 1;
+	public static final int REGISTER_CODE = 2;
 	protected void setTitle(String title){
 		this.title = title;
 	}

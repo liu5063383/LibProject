@@ -1,8 +1,10 @@
 package com.lll.util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -22,9 +24,12 @@ public class NetTransferUtil {
 		// Post运作传送变数必须用NameValuePair[]阵列储存
 		// 传参数 服务端获取的方法为request.getParameter("name")
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("name", "this is post"));
+		Set<String> keys = paramsMap.keySet();
+		for (Iterator<String> it = keys.iterator(); it.hasNext();) {
+			String key = (String) it.next();
+			params.add(new BasicNameValuePair(key, paramsMap.get(key)));
+		}
 		try {
-
 			// 发出HTTP request
 			httpRequest.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 			// 取得HTTP response

@@ -13,6 +13,7 @@ public class LoginService {
 	private String appid = "";
 	private String partner = "";
 	private final String PRIVATE_KEY = "";
+	Map<String, String> paramsMap = new HashMap<String, String>();
 
 	public LoginService(String appid, String partner) {
 		this.appid = appid;
@@ -20,9 +21,8 @@ public class LoginService {
 	}
 
 	public Boolean login(String username, String password) {
-		String url = "http://172.20.0.206:8082//TestServelt/login.do";
+		String url = "http://api.aigame365.com/api/loginService.shtml";
 		String encryPass = EncryptionTools.md5(password + "*aigame365#");
-		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("username", username);
 		paramsMap.put("password", encryPass);
 		paramsMap.put("appid", appid);
