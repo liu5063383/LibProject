@@ -17,15 +17,26 @@ public final class R {
     public static final class id {
         public static int buttonLogin1=0x7f070005;
         public static int buttonLogin2=0x7f070006;
-        public static int menu_settings=0x7f070007;
+        public static int buttonLogin3=0x7f070007;
+        public static int buttonReg1=0x7f07000f;
+        public static int buttonReg2=0x7f070010;
+        public static int menu_settings=0x7f070011;
         public static int password=0x7f070002;
+        public static int password1=0x7f07000a;
+        public static int password2=0x7f07000c;
+        public static int reg_txt_username=0x7f070009;
+        public static int reg_username=0x7f070008;
         public static int txt_loginerror=0x7f070004;
         public static int txt_password=0x7f070003;
+        public static int txt_password1=0x7f07000b;
+        public static int txt_password2=0x7f07000d;
+        public static int txt_regerror=0x7f07000e;
         public static int txt_username=0x7f070001;
         public static int username=0x7f070000;
     }
     public static final class layout {
         public static int pay_sdk_login=0x7f030000;
+        public static int pay_sdk_register=0x7f030001;
     }
     public static final class menu {
         public static int login=0x7f060000;

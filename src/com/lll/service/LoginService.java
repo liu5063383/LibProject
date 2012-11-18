@@ -6,31 +6,30 @@ import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
+import com.lll.entity.User;
 import com.lll.util.EncryptionTools;
 import com.lll.util.NetTransferUtil;
 
-public class LoginService {
-	private String appid = "";
-	private String partner = "";
-	private final String PRIVATE_KEY = "";
-	Map<String, String> paramsMap = new HashMap<String, String>();
+public class LoginService  extends BaseService {
 
 	public LoginService(String appid, String partner) {
-		this.appid = appid;
-		this.partner = partner;
+		super(appid, partner);
 	}
 
-	public Boolean login(String username, String password) {
+	public Boolean login(User user) {
 		String url = "http://api.aigame365.com/api/loginService.shtml";
-		String encryPass = EncryptionTools.md5(password + "*aigame365#");
-		paramsMap.put("username", username);
+		String encryPass = EncryptionTools.md5(user.getPassword() + PRIVATE_KEY);
+		paramsMap.put("username", user.getUsername());
 		paramsMap.put("password", encryPass);
 		paramsMap.put("appid", appid);
 		paramsMap.put("partner", partner);
-		String macString = EncryptionTools.md5(appid + username + encryPass
+		String macString = EncryptionTools.md5(appid + user.getUsername() + encryPass
 				+ partner + PRIVATE_KEY);
 		paramsMap.put("mac", macString);
 		String resultString = NetTransferUtil.post(url, paramsMap);
+		Log.i("debug_print", resultString);
 		JSONObject resultObj = null;
 		try {
 			resultObj = new JSONObject(resultString);
